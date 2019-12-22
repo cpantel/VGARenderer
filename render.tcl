@@ -28,7 +28,6 @@ proc isNegClock { line } {
   return [ expr ! [ isPosClock $line ] ]
 }
 
-
 proc isHSyncUp { line } {
   if { [ string index $line 2 ] == "1" } { return 1 }
   return 0
@@ -70,6 +69,14 @@ wm geometry . "${H_MAX_SIZE}x${V_MAX_SIZE}"
 set infile stdin
 set offset 0
 update
+
+
+$theCanvas create rect \
+    [ expr { $H_BACK - 2 } ] \
+    [ expr { $V_TOP -2 } ] \
+    [ expr { $H_BACK + $H_DISPLAY } ] \
+    [ expr { $V_DISPLAY + $V_TOP  } ] \
+    -fill  "" -width 2 -outline green
 
 while 1 {
 
